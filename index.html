@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Envio de Comunicados</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+</head>
+<body>
+
+
+
+
+
+<!-------------PÁGINA 01 --------->
+    <div id="screen1" class="screen active">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="info-cabecalho">
+            <p class="info-cabecalho-txt">
+                Tem como objetivo centralizar e padronizar a solicitação de envio de comunicados internos e externos da Senior.<br>
+                O Portal de Envio de Comunicados está atrelado ao Portal de Documentação da Senior, gerenciado pela equipe de <b>Gestão do Conhecimento</b>.
+            </p>
+        </div>
+    
+        <div class="info-pagina">
+            <p class="info-pagina-txt">O processo para solicitar o envio de comunicados é muito simples!<br>Será solicitado itens como: o produto relacionado
+            o conteúdo a ser enviado (texto, imagens, gifs, etc.), data e hora de envio, contatos, etc.<br>
+            Você precisará preencher todas as opções com o máximo de detalhes para podermos estabelecer<br>
+            uma comunicação clara e concisa com nossos clientes e público interno.<br>
+            Para começar, clique no botão "<b>Solicitar envio de comunicado</b>" logo abaixo.</p>
+        </div>
+    
+        <div class="btn-comecar-container">
+            <button  class="btn-comecar" onclick="nextScreen(1)">Solicitar envio de comunicado</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<!-------------PÁGINA 02 --------->
+
+    <div id="screen2" class="screen">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="info-cabecalho">
+            <p class="info-cabecalho-txt">
+                Para continuar insira seu nome e e-mail e selecione o(s) produto(s) relacionado(s) ao comunicado:.
+            </p>
+        </div>
+    
+
+        <div class="input-email-container">
+            <input type="nome" id="nome" class="form-control-input" placeholder="Insira seu nome" oninput="">
+            <label for="floatingInput"></label>
+        </div>
+
+
+        <div class="input-email-container">
+            <input type="email" id="email" class="form-control-input" placeholder="Insira seu e-mail" oninput="">
+            <label for="floatingInput"></label>
+          </div>
+    
+    
+      <div class="container-menu">
+            <button class="menu-btn">Selecione seu produto</button>
+            <div class="dropdown-menu">
+                <label><input type="checkbox" name="produto" value="ERP XT"> ERP XT</label>
+                <label><input type="checkbox" name="produto" value="HCM"> HCM</label>
+                <label><input type="checkbox" name="produto" value="Acessso e Segurança"> Acessso e Segurança</label>
+                <label><input type="checkbox" name="produto" value="Tecnoogia"> Tecnoogia</label >
+                <label><input type="checkbox" name="produto" value="e-Docs"> e-Docs</label >
+                <label><input type="checkbox" name="produto" value="Platform"> Platform</label >
+                <label><input type="checkbox" name="produto" value="Cloud"> Cloud</label >
+            </div>
+        </div>
+    
+        <div class="btn-container">
+        <div class="btn-voltar-container">
+            <button class="btn-voltar" onclick="prevScreen(2)">Voltar</button>
+        </div>
+    
+        <div class="btn-continuar-container">
+            <button class="btn-continuar" onclick="nextScreen(2)" >Continuar</button>
+        </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const dropdownButton = document.querySelector('.menu-btn');
+                const dropdownContent = document.querySelector('.dropdown-menu');
+        
+                dropdownButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    dropdownContent.classList.toggle('show');
+                });
+        
+                // Fecha o dropdown se o usuário clicar fora dele
+                window.addEventListener('click', (event) => {
+                    if (!dropdownContent.contains(event.target) && !dropdownButton.contains(event.target)) {
+                        dropdownContent.classList.remove('show');
+                    }
+                });
+            });
+        </script>
+    </div>
+
+
+
+
+
+
+<!-------------PÁGINA 03 --------->
+
+    <div id="screen3" class="screen">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="info-cabecalho">
+            <p class="info-cabecalho-txt">
+                Insira com detalhes e/ou exatidão o que precisará ser comunicado:
+            </p>
+        </div>
+    
+     <div class="content">
+        <div class="textarea-container">
+                <textarea id="comunicado-text" placeholder="Digite seu texto aqui..."></textarea>
+        </div>
+        <div class="upload-container">
+            <label for="file-upload">Caso existam imagens específicas, informe o link no texto ou insira-as aqui:</label>
+            <input type="file" id="file-upload" multiple>
+        </div>
+     </div>  
+    
+     <div class="info-cabecalho">
+        <p class="info-cabecalho-txt">
+            Insira a data e horário que o comunicado deve ser <b>enviado</b>:
+        </p>
+    </div>
+    
+     <div class="date-time-container">
+        <label for="date-picker">Data:</label>
+        <input type="date" id="date-picker">
+        <label for="time-picker">Hora:</label>
+        <input type="time" id="time-picker" step="1800"> <!-- Incremento de 30 minutos -->
+    </div>
+    
+     <div class="btn-container">
+        <div class="btn-voltar-container">
+            <button class="btn-voltar" onclick="prevScreen(3)">Voltar</button>
+        </div>
+        <div class="btn-continuar-container">
+            <button class="btn-continuar" onclick="nextScreen(3)">Continuar</button>
+        </div>
+        
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+<!-------------PÁGINA 04 --------->
+
+    <div id="screen4" class="screen">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="cabecalho">
+            <h2 class="info-cabecalho-h2">
+                Para finalizar a solicitação, preencha as seguintes informações:
+            </h2>
+        </div>
+    
+    <div class="upload-container">
+        <div class="info-cabecalho">
+            <p class="info-cabecalho-txt">
+                Existe alguma lista de contatos específica para o envio deste comunicado?
+            </p>
+            <p class="legendas-cabecalho">Se sim, anexe-a logo abaixo (formato planilha excel). Caso não haja, deixe em branco que enviaremos para os contatos cadastrados no produto</p>
+        </div>
+        <div class="upload-container">
+            <input type="file" id="contact-list-upload" multiple placeholder="Anexar lista de contatos">
+        </div>
+    </div>
+    
+    <div class="info-cabecalho">
+        <p class="info-cabecalho-txt">
+            Quem deve validar o comunicado antes de ser enviado?
+        </p>
+    </div>
+    <div class="content">
+        <div class="textarea-container">
+                <textarea id="validadores" placeholder="Insira o(s) contato(s) de quem validará o comunicado"></textarea>
+        </div>
+    </div>
+    
+    
+    <div class="info-cabecalho">
+        <p class="info-cabecalho-txt">
+            Alguma área interna precisa receber esse comunicado?
+        </p>
+    </div>
+    <div class="content">
+        <div class="textarea-container">
+                <textarea id="areas-internas" placeholder="Insira o(s) contato(s) internos"></textarea>
+        </div>
+    </div>
+    
+    <div class="btn-container">
+        <div class="btn-voltar-container">
+            <button class="btn-voltar" onclick="prevScreen(4)">Voltar</button>
+        </div>
+        <div class="btn-continuar-container">
+            <button class="btn-continuar" onclick="nextScreen(4)">Continuar</button>
+        </div>
+        
+    </div>
+    </div>
+
+
+
+
+
+
+<!-------------PÁGINA 05 --------->
+
+
+
+    <div id="screen5" class="screen">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="cabecalho">
+            <h2 class="info-cabecalho-h2">
+                Resumo da Solicitação
+            </h2>
+        </div>
+
+        <div id="resumo-container">
+            <!-- Resumo será preenchido dinamicamente -->
+        </div>
+
+
+        <div class="progress-container" id="progress-container" style="display: none;">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="confirmation-message" style="display: none;">Solicitação efetuada! Em breve um(a) redator(a) entrará em contato.</p>
+
+
+        <div class="btn-container" id="btn-container">
+            <div class="btn-voltar-container">
+                <button class="btn-voltar" onclick="prevScreen(5)">Voltar</button>
+            </div>
+            <div class="btn-continuar-container">
+                <button class="btn-continuar" onclick="startLoading()">Confirmar</button>
+            </div>
+        </div>
+        <div class="btn-container" id="btn-sair-container" style="display: none;">
+            <div class="btn-voltar-container">
+                <button class="btn-voltar" onclick="resetForm()">Sair</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+<!-------------PÁGINA 06 -------
+
+    <div id="screen6" class="screen">
+        <div class="cabecalho">
+            <h1 class="title">PORTAL DE ENVIO DE COMUNICADOS SENIOR</h1>
+            <img class="envelope "src="images/envelope.png"/>
+        </div>
+    
+        <div class="cabecalho">
+            <h2 class="info-cabecalho-h2">
+                Solicitação Confirmada!
+            </h2>
+        </div>
+    
+    
+        <div class="cabecalho">
+            <p class="info-cabecalho-h2">
+                Nº da solicitação:<br>
+                0000554158454
+            </p        >
+        </div>
+    
+        <div class="cabecalho">
+            <p class="info-cabecalho-h2">
+                Redator(a) responsável:<br>
+                Guilherme Vailatti
+            </p>
+        </div>
+    
+    
+        <div class="cabecalho">
+            <p class="info-cabecalho-h2">
+                Em breve você receberá a confirmação do(a) redator(a) responsável,<br>
+                fique atento(a) ao seu e-mail.
+            </p>
+        </div>
+    
+    
+    
+        <div class="btn-container">
+            <div class="btn-voltar-container">
+                <button class="btn-voltar" onclick="prevScreen(6)">Voltar</button>
+                <button class="btn-continuar" onclick="finalize()">Sair</button>
+            </div>
+        </div>
+    </div>
+
+
+
+-->
+
+
+    <script>
+    let formData = {};
+
+    function showScreen(screenNumber) {
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById('screen' + i).classList.remove('active');
+        }
+        document.getElementById('screen' + screenNumber).classList.add('active');
+
+        if (screenNumber === 5) {
+            generateSummary();
+        }
+    }
+
+    function nextScreen(current) {
+        if (current < 5) {
+            saveFormData(current);
+            showScreen(current + 1);
+        }
+    }
+
+    function prevScreen(current) {
+        if (current > 1) {
+            showScreen(current - 1);
+        }
+    }
+
+    function saveFormData(screenNumber) {
+        switch(screenNumber) {
+            case 2:
+                const nomeElement = document.getElementById('nome');
+                const emailElement = document.getElementById('email');
+                const produtosElements = document.querySelectorAll('input[name="produto"]:checked');
+                if (nomeElement && emailElement && produtosElements) {
+                    formData.nome = nomeElement.value;
+                    formData.email = emailElement.value;
+                    formData.produtos = Array.from(produtosElements).map(cb => cb.value);
+                }
+                break;
+            case 3:
+                const comunicadoTextElement = document.getElementById('comunicado-text');
+                const dateElement = document.getElementById('date-picker');
+                const timeElement = document.getElementById('time-picker');
+                if (comunicadoTextElement && dateElement && timeElement) {
+                    formData.comunicado = comunicadoTextElement.value;
+                    formData.data = dateElement.value;
+                    formData.hora = timeElement.value;
+                }
+                break;
+            case 4:
+                const contactListElement = document.getElementById('contact-list-upload');
+                const validadoresElement = document.getElementById('validadores');
+                const areasInternasElement = document.getElementById('areas-internas');
+                if (contactListElement) {
+                    formData.contatos = contactListElement.files;
+                }
+                if (validadoresElement) {
+                    formData.validadores = validadoresElement.value;
+                }
+                if (areasInternasElement) {
+                    formData.areasInternas = areasInternasElement.value;
+                }
+                break;
+        }
+    }
+
+    function generateSummary() {
+        let resumoContainer = document.getElementById('resumo-container');
+        resumoContainer.innerHTML = `
+            <p><b>Solicitante:</b> ${formData.nome || ''}</p>
+            <p><b>Email:</b> ${formData.email || ''}</p>
+            <p><b>Produtos:</b> ${formData.produtos ? formData.produtos.join(', ') : ''}</p>
+            <p><b>Comunicado:</b> ${formData.comunicado || ''}</p>
+            <p><b>Data:</b> ${formData.data || ''}</p>
+            <p><b>Hora:</b> ${formData.hora || ''}</p>
+            <p><b>Contatos:</b> ${formData.contatos ? Array.from(formData.contatos).map(file => file.name).join(', ') : ''}</p>
+            <p><b>Validadores:</b> ${formData.validadores || ''}</p>
+            <p><b>Áreas Internas:</b> ${formData.areasInternas || ''}</p>
+        `;
+    }
+
+    function startLoading() {
+    const progressBar = document.getElementById("progress-bar");
+    const progressContainer = document.getElementById("progress-container");
+    const confirmationMessage = document.getElementById("confirmation-message");
+    const btnContainer = document.getElementById("btn-container");
+    const btnSairContainer = document.getElementById("btn-sair-container");
+
+    if (progressBar && progressContainer && confirmationMessage && btnContainer && btnSairContainer) {
+        progressContainer.style.display = "block";
+        confirmationMessage.style.display = "none";
+        btnContainer.style.display = "none";
+        progressBar.style.width = "0";
+        let width = 0;
+
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                confirmationMessage.style.display = "block";
+                btnSairContainer.style.display = "block"; // Mostrar o botão "Sair" após o carregamento
+            } else {
+                width += 1.5;
+                progressBar.style.width = width + "%";
+            }
+        }, 60);
+    } 
+}
+
+function resetForm() {
+    formData = {};
+    document.getElementById('nome').value = '';
+    document.getElementById('email').value = '';
+    document.querySelectorAll('input[name="produto"]:checked').forEach(cb => cb.checked = false);
+    document.getElementById('comunicado-text').value = '';
+    document.getElementById('date-picker').value = '';
+    document.getElementById('time-picker').value = '';
+    document.getElementById('contact-list-upload').value = '';
+    document.getElementById('validadores').value = '';
+    document.getElementById('areas-internas').value = '';
+    showScreen(1);
+}
+
+
+    /*function finalize() {
+        saveFormData(5);
+        generateSummary();
+        downloadFormData();
+        showScreen(1);  // Reinicia para a primeira tela após finalizar
+    }
+
+    function downloadFormData() {
+        let content = `
+Solicitante: ${formData.nome || ''}
+Email: ${formData.email || ''}
+Produtos: ${formData.produtos ? formData.produtos.join(', ') : ''}
+Comunicado: ${formData.comunicado || ''}
+Data: ${formData.data || ''}
+Hora: ${formData.hora || ''}
+Contatos: ${formData.contatos ? Array.from(formData.contatos).map(file => file.name).join(', ') : ''}
+Validadores: ${formData.validadores || ''}
+Áreas Internas: ${formData.areasInternas || ''}
+        `;
+        
+        let blob = new Blob([content], { type: 'text/plain' });
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'resumo_solicitacao.txt';
+        link.click();
+    }*/
+</script>
+</body>
+</html>
